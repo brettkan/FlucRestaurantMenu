@@ -19,6 +19,17 @@ var path = {
   ENTRY_POINT: './client/js/components/app.js'
 };
 
+gulp.task('minify-css', function() {
+  return gulp.src('client/styles/*.css')
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('client/dist/styles'));
+});
+
+gulp.task('copy-css', function(){
+  gulp.src('client/styles/*.css')
+    .pipe(gulp.dest('client/dist/styles'));
+});
+
 gulp.task('htmlReplaceDev', function(){
   gulp.src(path.HTML)
   .pipe(htmlreplace({
