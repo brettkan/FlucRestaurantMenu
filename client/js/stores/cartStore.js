@@ -12,14 +12,24 @@ var _state = {
 
 var addItemToCart = function(menuItem) {
   var itemID = menuItem.id;
+  var priceSum = _state.cartPrice + menuItem.price;
+
   _state.cartItems[itemID] = menuItem;
   _state.cartItems[itemID].quantity = _state.cartItems[itemID].quantity + 1 || 1;
 
-  _state.cartPrice += menuItem.price;
+  _state.cartPrice = Number(priceSum.toFixed(2));
 };
 
-var removeItemFromCart = function(menuItem){
-  
+var removeItemFromCart = function(itemID){
+  var priceDiff = _state.cartPrice - _state.cartItems[itemID].price;
+
+  _state.cartItems[itemID].quantity--;
+  _state.cartPrice = Number(priceDiff.toFixed(2));
+
+  if (_state.cartItems[itemID].quantity <= 0) {
+    delete _state.cartItems[itemID];
+  }
+
 };
 
 var queueStore = objectAssign({}, EventEmitter.prototype, {
