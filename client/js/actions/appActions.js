@@ -7,6 +7,13 @@ var appActions = {
       actionType: AppConstants.SET_MENU_DATA,
       data: menuData
     });
+  },
+
+  addToCart: function(menuItem) {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.ADD_TO_CART,
+      data: menuItem
+    });
   }
 };
 

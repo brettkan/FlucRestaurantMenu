@@ -1,8 +1,10 @@
 var React = require('react');
+var appActions = require('../actions/appActions');
 
 var MenuItem = React.createClass({
 
   handleAddToCart: function(){
+    appActions.addToCart(this.props.menuItem);
   },
 
   render: function(){
