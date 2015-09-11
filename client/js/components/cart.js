@@ -25,7 +25,6 @@ var Queue = React.createClass({
       var items = [];
 
       for (var key in this.state.cartItems) {
-        // console.log(key, this.state.cartItems[key]);
         items.push(
           <CartItem key={key} cartItem={this.state.cartItems[key]} />
         );
@@ -35,7 +34,8 @@ var Queue = React.createClass({
     }.bind(this);
 
     return (
-      <div className='col-med-4'>
+      <div className='col-md-4'>
+        <h3>Cart</h3>
         <ul className='cart-list'>
           {cartItems()}
         </ul>

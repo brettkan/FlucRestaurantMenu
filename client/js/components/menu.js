@@ -20,7 +20,7 @@ var Menu = React.createClass({
     }.bind(this);
 
     return (
-      <section className='col-lg-8'>
+      <section className='col-md-8'>
         {menuCategories()}
       </section>
     );
