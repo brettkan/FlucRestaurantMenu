@@ -4,7 +4,7 @@ var appActions = require('../actions/appActions');
 var CartItem = React.createClass({
 
   handleRemoveFromCart: function(){
-    appActions.addToCart(this.props.cartItem);
+    appActions.removeFromCart(this.props.cartItem.id);
   },
 
   render: function(){

@@ -14,6 +14,13 @@ var appActions = {
       actionType: AppConstants.ADD_TO_CART,
       data: menuItem
     });
+  },
+
+  removeFromCart: function(itemID) {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.REMOVE_FROM_CART,
+      data: itemID
+    });
   }
 };
 
