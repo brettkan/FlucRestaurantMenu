@@ -6,13 +6,20 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE = 'CHANGE';
 
 var _state = {
-  cartItems: {}
+  cartItems: {},
+  cartPrice: 0
 };
 
 var addItemToCart = function(menuItem) {
   var itemID = menuItem.id;
-  cartItems[itemID] = menuItem;
-  cartItems[itemID].quantity = cartItems[itemID].quantity + 1 || 1;
+  _state.cartItems[itemID] = menuItem;
+  _state.cartItems[itemID].quantity = _state.cartItems[itemID].quantity + 1 || 1;
+
+  _state.cartPrice += menuItem.price;
+};
+
+var removeItemFromCart = function(menuItem){
+  
 };
 
 var queueStore = objectAssign({}, EventEmitter.prototype, {
