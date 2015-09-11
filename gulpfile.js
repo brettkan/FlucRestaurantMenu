@@ -18,3 +18,25 @@ var path = {
   DEST_SRC: 'client/dist/src',
   ENTRY_POINT: './client/js/components/app.js'
 };
+
+gulp.task('watch', function(){
+  gulp.watch(path.HTML, [ 'htmlReplaceDev' ]);
+  gulp.watch('client/styles/styles.css', [ 'copy-css' ]);
+
+  var watcher = watchify(browserify({
+    entries: [path.ENTRY_POINT],
+    transform: [reactify],
+    debug: true,
+    cache: {}, packageCache: {}, fullPaths: true
+  }));
+
+  return watcher.on('update', function(){
+    watcher.bundle()
+      .pipe(source(path.OUT))
+      .pipe(gulp.dest(path.DEST_SRC));
+      console.log('Updated!');
+  })
+    .bundle()
+    .pipe(source(path.OUT))
+    .pipe(gulp.dest(path.DEST_SRC));
+});
