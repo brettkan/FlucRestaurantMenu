@@ -9,6 +9,12 @@ var _state = {
   cartItems: {}
 };
 
+var addItemToCart = function(menuItem) {
+  var itemID = menuItem.id;
+  cartItems[itemID] = menuItem;
+  cartItems[itemID].quantity = cartItems[itemID].quantity + 1 || 1;
+};
+
 var queueStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
     this.on(CHANGE, cb);
