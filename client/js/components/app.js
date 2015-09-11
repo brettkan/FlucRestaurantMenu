@@ -2,7 +2,7 @@ var React = require('react');
 var NavBar = require('./navBar');
 var Menu = require('./menu');
 var Cart = require('./cart');
-var appStore = require('../stores/appStore');
+var menuStore = require('../stores/menuStore');
 var apiUtil = require('../utils/apiUtil');
 var menuData = require('../menuData');
 
@@ -10,7 +10,7 @@ var menuData = require('../menuData');
 var Main = React.createClass({
 
   getInitialState: function(){
-    return appStore.getState();
+    return menuStore.getState();
   },
 
   componentWillMount: function() {
@@ -19,15 +19,15 @@ var Main = React.createClass({
   },
 
   componentDidMount: function(){
-    appStore.addChangeListener(this._onChange);
+    menuStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    appStore.removeChangeListener(this._onChange);
+    menuStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function() {
-    this.setState(appStore.getState());
+    this.setState(menuStore.getState());
   },
 
   render: function() {
@@ -39,8 +39,8 @@ var Main = React.createClass({
           </div>
         </div>
         <div className='container'>
-          <div className = 'row'>
-            <Menu />
+          <div className='row'>
+            <Menu menuItems={this.state.menuItems} />
             <Cart />
           </div>
         </div>
