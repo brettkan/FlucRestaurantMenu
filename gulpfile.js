@@ -19,6 +19,14 @@ var path = {
   ENTRY_POINT: './client/js/components/app.js'
 };
 
+gulp.task('htmlReplaceDev', function(){
+  gulp.src(path.HTML)
+  .pipe(htmlreplace({
+    'js': 'src/' + path.OUT
+  }))
+    .pipe(gulp.dest(path.DEST));
+});
+
 gulp.task('watch', function(){
   gulp.watch(path.HTML, [ 'htmlReplaceDev' ]);
   gulp.watch('client/styles/styles.css', [ 'copy-css' ]);
