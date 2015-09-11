@@ -78,3 +78,17 @@ gulp.task('replaceHTML', function(){
     }))
     .pipe(gulp.dest(path.DEST));
 });
+
+gulp.task('default', [
+  'htmlReplaceDev',
+  'copy-css',
+  'watch'
+]);
+
+gulp.task('production', [
+  'replaceHTML',
+  'build',
+  'minify-css',
+  'copy-assets-login'
+]);
+
