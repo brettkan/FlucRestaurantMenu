@@ -4,7 +4,7 @@ var NavBar = React.createClass({
 
   render: function() {
     return (
-      <nav className="navbar navbar-default navbar-fixed-top">
+      <nav className="navbar navbar-fixed-top">
         <div className="container-fluid">
 
           <div className="navbar-header">
