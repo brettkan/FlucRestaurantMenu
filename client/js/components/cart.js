@@ -3,7 +3,7 @@ var CartItem = require('./cartItem');
 var cartStore = require('../stores/cartStore');
 var appActions = require('../actions/appActions');
 
-var Queue = React.createClass({
+var Cart = React.createClass({
   getInitialState: function() {
     return cartStore.getState();
   },
@@ -49,16 +49,10 @@ var Queue = React.createClass({
       </li>
     );
 
-    var autoDisableButton = function() {
-      var cartButton = (<button className='btn btn-default' id='checkout-button' 
-        onClick={ this.handleCheckout }>Checkout</button>);
+    var cartButton = (<button className='btn btn-success' id='checkout-button' 
+      onClick={ this.handleCheckout }>Checkout</button>);
 
-      if (Object.keys(this.state.cartItems).length === 0) {
-        cartButton.props.disabled = 'disabled';
-      } 
-
-      return cartButton;
-    }.bind(this);
+    var emptyCartButton = React.cloneElement(cartButton, {disabled: 'disabled'});
 
     return (
       <div className='col-md-4'>
@@ -71,7 +65,7 @@ var Queue = React.createClass({
         <div className="panel panel-default total-price">
           <div className="panel-body clearfix">
             <div id='checkout-price'>Total Price: ${this.state.cartPrice}</div>
-            {autoDisableButton()} 
+            {cartEmpty() ? emptyCartButton : cartButton} 
           </div>
         </div>
 
@@ -81,4 +75,4 @@ var Queue = React.createClass({
 
 });
 
-module.exports = Queue;
+module.exports = Cart;
