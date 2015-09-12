@@ -27,19 +27,19 @@ var menuData = {
           id: '1121',
           name: 'BLT',
           price: 8.99,
-          description: 'Bacon, lettuce, and tomato sandwich'
+          description: 'Bacon, lettuce, and tomato on white bread'
         },
         {
           id: '1122',
           name: 'Club Sandwich',
           price: 9.99,
-          description: 'Roast Beef, Ham, and Turkey'
+          description: 'Roast beef, ham, and turkey on sourdough bread'
         },
         {
           id: '1123',
           name: 'Philly Cheesesteak',
           price: 10.99,
-          description: 'Sliced rib-eye roast with American cheese'
+          description: 'Sliced rib-eye roast with American cheese on a soft roll'
         }]
     }));
   }
