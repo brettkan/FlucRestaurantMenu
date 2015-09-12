@@ -32,7 +32,12 @@ var removeItemFromCart = function(itemID){
 
 };
 
-var queueStore = objectAssign({}, EventEmitter.prototype, {
+var clearCart = function() {
+  _state.cartItems = {};
+  _state.cartPrice = 0;
+};
+
+var cartStore = objectAssign({}, EventEmitter.prototype, {
   addChangeListener: function(cb){
     this.on(CHANGE, cb);
   },
@@ -44,16 +49,19 @@ var queueStore = objectAssign({}, EventEmitter.prototype, {
   }
 });
 
-queueStore.dispatchToken = AppDispatcher.register(function(payload) {
+cartStore.dispatchToken = AppDispatcher.register(function(payload) {
   if (payload.actionType === appConstants.ADD_TO_CART) {
     addItemToCart(payload.data);
-    queueStore.emit(CHANGE);
-  } else if (payload.actionType === appConstants.REMOVE_FROM_CART ){
+    cartStore.emit(CHANGE);
+  } else if (payload.actionType === appConstants.REMOVE_FROM_CART){
     removeItemFromCart(payload.data);
-    queueStore.emit(CHANGE);
-  }
+    cartStore.emit(CHANGE);
+  } else if (payload.actionType === appConstants.CLEAR_CART){
+    clearCart();
+    cartStore.emit(CHANGE);
+  } 
 
   return true;
 });
 
-module.exports = queueStore;
+module.exports = cartStore;
