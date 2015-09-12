@@ -13,7 +13,7 @@ var MenuItem = React.createClass({
     return (
       <li className='list-group-item menu-item' key={item.userId}>
         <div>{item.name}</div>
-        <div>{item.price}</div>
+        <div>${item.price}</div>
         <div>{item.description}</div>
         <button className='btn btn-default' onClick={ this.handleAddToCart }>Add to cart</button>
       </li>
