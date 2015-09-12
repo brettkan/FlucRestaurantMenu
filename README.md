@@ -4,7 +4,7 @@ Simple React.js application for adding and removing items from a cart.
 
 ## Development Environment Setup
 
-## Requirements
+### Requirements
 
 - Node 0.12.7
 - Express 4.13.1
@@ -31,4 +31,4 @@ gulp
 node index.js
 ``` 
 
-After the node server is running, navigate to localhost on port 3000 to access the app
+After the node server is running, navigate to localhost on port 3000 to access the app.
