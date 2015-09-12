@@ -12,7 +12,7 @@ var MenuCategory = React.createClass({
 
     return (
       <div className='menu-category'>
-        <h3>{this.props.menuCategory}</h3>
+        <h4>{this.props.menuCategory}</h4>
         <ul>
           {menuItems}
         </ul>

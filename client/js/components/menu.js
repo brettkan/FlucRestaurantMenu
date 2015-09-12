@@ -21,7 +21,10 @@ var Menu = React.createClass({
 
     return (
       <section className='col-md-8'>
-        {menuCategories()}
+        <h3>Restaurant Menu</h3>
+        <div>
+          {menuCategories()}
+        </div>
       </section>
     );
   }
