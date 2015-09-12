@@ -10,9 +10,20 @@ var _state = {
   cartPrice: '0.00'
 };
 
+var getCartPrice = function() {
+  var total = 0;
+
+  for (var key in _state.cartItems) {
+    var item = _state.cartItems[key];
+    total += item.quantity * item.price;
+  }
+
+  return total;
+};
+
 var addItemToCart = function(menuItem) {
   var itemID = menuItem.id;
-  var priceSum = Number(_state.cartPrice) + menuItem.price;
+  var priceSum = getCartPrice() + menuItem.price;
 
   _state.cartItems[itemID] = menuItem;
   _state.cartItems[itemID].quantity = _state.cartItems[itemID].quantity + 1 || 1;
@@ -21,7 +32,7 @@ var addItemToCart = function(menuItem) {
 };
 
 var removeItemFromCart = function(itemID){
-  var priceDiff = Number(_state.cartPrice) - _state.cartItems[itemID].price;
+  var priceDiff = getCartPrice() - _state.cartItems[itemID].price;
 
   _state.cartItems[itemID].quantity--;
   _state.cartPrice = priceDiff.toFixed(2);

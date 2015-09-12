@@ -21,7 +21,7 @@ var Queue = React.createClass({
   },
 
   handleCheckout: function() {
-    alert('Fluc yeah! Thank you for placing your order! Your total is $' + this.state.cartPrice);
+    alert('Fluc yeah! Thank you for placing your order! Your total is $' + this.state.cartPrice + '.');
     appActions.clearCart();
   },
 
