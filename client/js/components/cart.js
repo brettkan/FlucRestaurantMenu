@@ -20,6 +20,11 @@ var Queue = React.createClass({
     this.setState(cartStore.getState());
   },
 
+  handleCheckout: function() {
+    alert('Fluc yeah! Thank you for placing your order! Your total is ' + this.state.cartPrice);
+    appActions.clearCart();
+  },
+
   render: function(){
     var cartItems = function() {
       var items = [];
@@ -41,6 +46,7 @@ var Queue = React.createClass({
         </ul>
         <div className='total-price'>
           {this.state.cartPrice}
+          <button onClick={ this.handleCheckout }>Checkout</button>
         </div>
       </div>
     );
