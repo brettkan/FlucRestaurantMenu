@@ -14,8 +14,8 @@ var CartItem = React.createClass({
       <li className='list-group-item cart-item' key={item.userId}>
         <div>{item.name}</div>
         <div>{item.price}</div>
-        <div>{item.quantity}</div>
-        <button onClick={ this.handleRemoveFromCart }>Remove from cart</button>
+        <div>Quantity: {item.quantity}</div>
+        <button className='btn btn-default' onClick={ this.handleRemoveFromCart }>Remove from cart</button>
       </li>
     );
   }

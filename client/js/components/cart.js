@@ -46,7 +46,7 @@ var Queue = React.createClass({
         </ul>
         <div className='total-price'>
           {this.state.cartPrice}
-          <button onClick={ this.handleCheckout }>Checkout</button>
+          <button className='btn btn-default' onClick={ this.handleCheckout }>Checkout</button>
         </div>
       </div>
     );

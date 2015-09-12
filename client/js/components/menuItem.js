@@ -15,7 +15,7 @@ var MenuItem = React.createClass({
         <div>{item.name}</div>
         <div>{item.price}</div>
         <div>{item.description}</div>
-        <button onClick={ this.handleAddToCart }>Add to cart</button>
+        <button className='btn btn-default' onClick={ this.handleAddToCart }>Add to cart</button>
       </li>
     );
   }
