@@ -15,7 +15,7 @@ var CartItem = React.createClass({
         <div>{item.name}</div>
         <div>${item.price}</div>
         <div>Quantity: {item.quantity}</div>
-        <button className='btn btn-default' onClick={ this.handleRemoveFromCart }>Remove from cart</button>
+        <button className='btn btn-default cart-button' onClick={ this.handleRemoveFromCart }>Remove from cart</button>
       </li>
     );
   }
