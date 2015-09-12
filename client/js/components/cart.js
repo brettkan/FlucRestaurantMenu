@@ -26,6 +26,11 @@ var Queue = React.createClass({
   },
 
   render: function(){
+    
+    var cartEmpty = function() {
+      return Object.keys(this.state.cartItems).length === 0 ? true : false;
+    }.bind(this);
+
     var cartItems = function() {
       var items = [];
 
@@ -38,18 +43,35 @@ var Queue = React.createClass({
       return items;
     }.bind(this);
 
+    var emptyCartNote = (
+      <li className='list-group-item cart-item'>
+        <div>You do not have any items in your cart</div>
+      </li>
+    );
+
+    var autoDisableButton = function() {
+      var cartButton = (<button className='btn btn-default' id='checkout-button' 
+        onClick={ this.handleCheckout }>Checkout</button>);
+
+      if (Object.keys(this.state.cartItems).length === 0) {
+        cartButton.props.disabled = 'disabled';
+      } 
+
+      return cartButton;
+    }.bind(this);
+
     return (
       <div className='col-md-4'>
         
         <h3>Cart</h3>
         <ul className='cart-list'>
-          {cartItems()}
+          {cartEmpty() ? emptyCartNote : cartItems()}
         </ul>
 
         <div className="panel panel-default total-price">
           <div className="panel-body clearfix">
             <div id='checkout-price'>Total Price: ${this.state.cartPrice}</div>
-            <button className='btn btn-default' id='checkout-button' onClick={ this.handleCheckout }>Checkout</button>  
+            {autoDisableButton()} 
           </div>
         </div>
 
