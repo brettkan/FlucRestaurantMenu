@@ -45,7 +45,7 @@ var Cart = React.createClass({
 
     var emptyCartNote = (
       <li className='list-group-item cart-item'>
-        <div>You do not have any items in your cart</div>
+        <div>There are no items in your cart.</div>
       </li>
     );
 
