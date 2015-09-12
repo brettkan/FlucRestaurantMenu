@@ -7,24 +7,24 @@ var CHANGE = 'CHANGE';
 
 var _state = {
   cartItems: {},
-  cartPrice: 0
+  cartPrice: '0.00'
 };
 
 var addItemToCart = function(menuItem) {
   var itemID = menuItem.id;
-  var priceSum = _state.cartPrice + menuItem.price;
+  var priceSum = Number(_state.cartPrice) + menuItem.price;
 
   _state.cartItems[itemID] = menuItem;
   _state.cartItems[itemID].quantity = _state.cartItems[itemID].quantity + 1 || 1;
 
-  _state.cartPrice = Number(priceSum.toFixed(2));
+  _state.cartPrice = priceSum.toFixed(2);
 };
 
 var removeItemFromCart = function(itemID){
-  var priceDiff = _state.cartPrice - _state.cartItems[itemID].price;
+  var priceDiff = Number(_state.cartPrice) - _state.cartItems[itemID].price;
 
   _state.cartItems[itemID].quantity--;
-  _state.cartPrice = Number(priceDiff.toFixed(2));
+  _state.cartPrice = priceDiff.toFixed(2);
 
   if (_state.cartItems[itemID].quantity <= 0) {
     delete _state.cartItems[itemID];
@@ -34,7 +34,7 @@ var removeItemFromCart = function(itemID){
 
 var clearCart = function() {
   _state.cartItems = {};
-  _state.cartPrice = 0;
+  _state.cartPrice = '0.00';
 };
 
 var cartStore = objectAssign({}, EventEmitter.prototype, {
