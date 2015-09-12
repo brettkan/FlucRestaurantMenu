@@ -19,12 +19,6 @@ var path = {
   ENTRY_POINT: './client/js/components/app.js'
 };
 
-gulp.task('minify-css', function() {
-  return gulp.src('client/styles/*.css')
-    .pipe(minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('client/dist/styles'));
-});
-
 gulp.task('copy-css', function(){
   gulp.src('client/styles/*.css')
     .pipe(gulp.dest('client/dist/styles'));
@@ -60,35 +54,9 @@ gulp.task('watch', function(){
     .pipe(gulp.dest(path.DEST_SRC));
 });
 
-gulp.task('build', function(){
-  browserify({
-    entries: [path.ENTRY_POINT],
-    transform: [reactify]
-  })
-  .bundle()
-  .pipe(source(path.MINIFIED_OUT))
-  .pipe(streamify(uglify(path.MINIFIED_OUT)))
-  .pipe(gulp.dest(path.DEST_BUILD));
-});
-
-gulp.task('replaceHTML', function(){
-  gulp.src(path.HTML)
-    .pipe(htmlreplace({
-      'js': 'build/' + path.MINIFIED_OUT
-    }))
-    .pipe(gulp.dest(path.DEST));
-});
-
 gulp.task('default', [
   'htmlReplaceDev',
   'copy-css',
   'watch'
-]);
-
-gulp.task('production', [
-  'replaceHTML',
-  'build',
-  'minify-css',
-  'copy-assets-login'
 ]);
 
