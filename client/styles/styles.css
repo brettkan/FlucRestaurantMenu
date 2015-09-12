@@ -1,3 +1,12 @@
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+
 body {
   padding-top: 70px;
 }
@@ -6,12 +15,15 @@ footer {
   margin: 50px 0;
 }
 
-.menu-button {
+ul {
+  padding-left: 0px;
+}
+
+.menu-button, .cart-button {
   position: absolute;
   top: 0;
   bottom: 0;
   right: 10px;
-  width: 120px;
   height: 34px;
   margin: auto;
 }
@@ -21,8 +33,25 @@ footer {
   top: 0;
   bottom: 0;
   right: 10px;
-  width: 140px;
   height: 34px;
   margin: auto;
 }
 
+.menu-button {
+  width: 120px;
+}
+
+.cart-button {
+  width: 140px;
+}
+
+#checkout-button {
+  float: right;
+  width: 100px;
+}
+
+#checkout-price {
+  font-size: 18px;
+  line-height: 34px;
+  display: inline-block;
+}

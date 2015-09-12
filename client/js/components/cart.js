@@ -40,14 +40,19 @@ var Queue = React.createClass({
 
     return (
       <div className='col-md-4'>
+        
         <h3>Cart</h3>
         <ul className='cart-list'>
           {cartItems()}
         </ul>
-        <div className='total-price'>
-          Total Price: ${this.state.cartPrice}
-          <button className='btn btn-default' onClick={ this.handleCheckout }>Checkout</button>
+
+        <div className="panel panel-default total-price">
+          <div className="panel-body clearfix">
+            <div id='checkout-price'>Total Price: ${this.state.cartPrice}</div>
+            <button className='btn btn-default' id='checkout-button' onClick={ this.handleCheckout }>Checkout</button>  
+          </div>
         </div>
+
       </div>
     );
   }
