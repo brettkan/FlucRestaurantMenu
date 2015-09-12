@@ -21,6 +21,12 @@ var appActions = {
       actionType: AppConstants.REMOVE_FROM_CART,
       data: itemID
     });
+  },
+
+  clearCart: function() {
+    AppDispatcher.dispatch({
+      actionType: AppConstants.CLEAR_CART
+    });
   }
 };
 
